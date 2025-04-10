@@ -1,4 +1,4 @@
-h1 {
-    color: rgb(208, 184, 166);
-    font-size: 100px;
-}
+@import "/src/scss/blocks/mixins";
+@import "/src/scss/blocks/utils";
+@import "/src/scss/blocks/login";
+@import "/src/scss/blocks/registration";

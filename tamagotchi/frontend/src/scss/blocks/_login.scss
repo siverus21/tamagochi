@@ -1,0 +1,65 @@
+body {
+    height: 100svh;
+}
+
+.form {
+    @include flex-center;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 600px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 16px;
+    justify-self: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    &__gradient {
+        height: 100%;
+        background: #48dbd6;
+        background: radial-gradient(
+            circle,
+            rgba(72, 219, 214, 1) 0%,
+            rgba(87, 173, 199, 1) 50%,
+            rgba(83, 137, 237, 1) 100%
+        );
+        padding-block: 50px;
+        @include flex-center;
+    }
+
+    &__title {
+        font-size: 28px;
+        // margin-top: 40px;
+        align-self: center;
+        color: white;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__input {
+        width: 300px;
+        height: 55px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: none;
+        font-size: 22px;
+
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            color: silver;
+            opacity: 0.8;
+        }
+    }
+
+    &__buttons {
+        margin-top: 50px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+    }
+}
