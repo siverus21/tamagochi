@@ -1,0 +1,21 @@
+// colors
+$white: #ffffff;
+$black: #000000;
+$semi-black: rgba(255, 255, 255, 0.15);
+
+// gradients
+$gradientWraper: radial-gradient(
+	circle,
+	rgba(72, 219, 214, 1) 0%,
+	rgba(87, 173, 199, 1) 50%,
+	rgba(83, 137, 237, 1) 100%
+);
+$gradientWraperBg: #48dbd6;
+
+// buttons
+$buttonMainBgColor: linear-gradient(90deg, #7c8db0, #28e2e2);
+$buttonShadow: 5px 7px 8px 0px rgba(0, 0, 0, 0.2);
+$buttonShadowHover: 0 0 10px rgba(59, 130, 246, 0.5);
+
+// utils
+$defaultBorderRadius: 4px;

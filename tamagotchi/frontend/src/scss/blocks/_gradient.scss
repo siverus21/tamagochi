@@ -1,0 +1,8 @@
+.gradient-wrapper {
+	height: 100%;
+	width: 100%;
+	background: $gradientWraperBg;
+	background: $gradientWraper;
+	padding-block: 50px;
+	@include flex-center;
+}

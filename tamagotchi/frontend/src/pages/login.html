@@ -9,31 +9,27 @@
 </head>
 
 <body>
-    <div class="form__gradient">
-       <div class="form">
-        <h3 class="form__title">Авторизация</h3>
-        <form class="form__content" action="" method="POST">
-            <div class="form__item">
-                <!-- <label class="form__label" for="login">Логин:</label> -->
-                <input class="form__input" id="login" type="text" name="login " placeholder="Логин" required />
-            </div>
-            <div class="form__item">             
-                <!-- <label class="form__label" for="password">Пароль:</label> -->
-                <input class="form__input" id="password" type="password" name="password"  placeholder="Пароль" required />
-            </div>
-            <div class="form__buttons">
-               <button class="button button__submit" type="submit">
-                    Войти
-                </button>
-                <button class="button button__registration" type="button">
-                    Зарегистрироваться
-                </button> 
-            </div>         
-        </form>
-    </div> 
-</div>
-    
-
+    <div class="gradient-wrapper">
+        <div class="form">
+            <h3 class="form__title">Авторизация</h3>
+            <form class="form__content" action="" method="POST">
+                <div class="form__item">
+                    <input class="form__input" id="login" type="text" name="login " placeholder="Логин" required />
+                </div>
+                <div class="form__item">
+                    <input class="form__input" id="password" type="password" name="password"  placeholder="Пароль" required />
+                </div>
+                <div class="form__buttons">
+                <button class="button button__submit" type="submit">
+                        Войти
+                    </button>
+                    <a class="button button__registration" href="./registration.html">
+                        Зарегистрироваться
+                    </a>
+                </div>         
+            </form>
+        </div> 
+    </div>
     <script src="./../../dist/bundle.js"></script>
 </body>
 
