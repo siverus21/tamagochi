@@ -1,24 +1,18 @@
 package main
 
-import (
-	"errors"
-	"fmt"
-)
-
 func main() {
-	message := make([]string, 5)
+	// messages := []string{
+	// 	"ms1",
+	// 	"ms2",
+	// 	"ms3",
+	// 	"ms4",
+	// }
 
-	message[0] = "1"
+	// for index, value := range messages {
+	// 	fmt.Println(value)
+	// }
 
-	fmt.Println(message)
-}
-
-func printMessages(msg []string) error{
-	if len(msg) == 0 {
-		return errors.New("empty array")
-	}
-	msg[2] = "6"
-	fmt.Println(msg)
-
-	return nil
+	// for _, value := range messages {
+	// 	fmt.Println(value)
+	// }
 }
