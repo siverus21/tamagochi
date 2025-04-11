@@ -1,46 +1,55 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-type Age int
-
-func (a Age) isAdult() bool{
-	if a >= 18{
-		return true
-	} else {
-		return false
-	}
+type Shape interface {
+	Area() float32
 }
 
-type User struct {
-	name   string
-	age    Age
-	sex    string
-	weight int
-	heigth int
+type Square struct {
+	sideLength float32
 }
 
-func (u *User) printUserInfo(){
-	fmt.Println(u.name, u.age, u.sex, u.weight, u.heigth)
+func (s Square) Area() float32 {
+	return s.sideLength * s.sideLength
 }
 
-func NewUser(name string, age int, sex string, weight int, heigth int) User{
-	return User{
-		name: name,
-		age: Age(age),
-		sex: sex,
-		weight: weight,
-		heigth: heigth,
-	}
+type Circle struct {
+	radius float32
+}
+
+func (c Circle) Area() float32 {
+	return c.radius * c.radius * math.Pi
 }
 
 func main() {
+	square := Square{5}
+	circle := Circle{8}
 
-	user := NewUser("Vasya", 23, "Male", 75, 185)
-	user1 := NewUser("Max", 21, "Male", 23, 150)
-	
-	fmt.Println(user.age.isAdult())
+	// printShapeArea(square)
+	// printShapeArea(circle)
 
-	user.printUserInfo()
-	user1.printUserInfo()
+
+	printInterface(26)
+	printInterface(true)
+	printInterface(square)
+	printInterface(circle)
+}
+
+func printShapeArea(shape Shape) {
+	fmt.Println(shape.Area())
+}
+
+func printInterface(i interface{}) {
+	switch val := i.(type){
+	case int: 
+		fmt.Println("int", val)
+	case bool:
+		fmt.Println("bool", val)
+	default:
+		fmt.Println("Unknown type", val)
+	}
 }
