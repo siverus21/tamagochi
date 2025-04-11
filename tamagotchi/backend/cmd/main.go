@@ -1,18 +1,46 @@
 package main
 
+import "fmt"
+
+type Age int
+
+func (a Age) isAdult() bool{
+	if a >= 18{
+		return true
+	} else {
+		return false
+	}
+}
+
+type User struct {
+	name   string
+	age    Age
+	sex    string
+	weight int
+	heigth int
+}
+
+func (u *User) printUserInfo(){
+	fmt.Println(u.name, u.age, u.sex, u.weight, u.heigth)
+}
+
+func NewUser(name string, age int, sex string, weight int, heigth int) User{
+	return User{
+		name: name,
+		age: Age(age),
+		sex: sex,
+		weight: weight,
+		heigth: heigth,
+	}
+}
+
 func main() {
-	// messages := []string{
-	// 	"ms1",
-	// 	"ms2",
-	// 	"ms3",
-	// 	"ms4",
-	// }
 
-	// for index, value := range messages {
-	// 	fmt.Println(value)
-	// }
+	user := NewUser("Vasya", 23, "Male", 75, 185)
+	user1 := NewUser("Max", 21, "Male", 23, 150)
+	
+	fmt.Println(user.age.isAdult())
 
-	// for _, value := range messages {
-	// 	fmt.Println(value)
-	// }
+	user.printUserInfo()
+	user1.printUserInfo()
 }
