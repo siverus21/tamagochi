@@ -1,0 +1,48 @@
+.form {
+	@include flex-center;
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	height: 600px;
+	border: 1px solid $white;
+	border-radius: 16px;
+	justify-self: center;
+	background-color: $semi-black;
+
+	&__title {
+		font-size: 28px;
+		align-self: center;
+		color: white;
+	}
+
+	&__item {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__input {
+		width: 300px;
+		height: 55px;
+		margin-top: 20px;
+		border-radius: $defaultBorderRadius;
+		border: none;
+		font-size: 22px;
+
+		&:focus {
+			outline: none;
+		}
+		&::placeholder {
+			color: silver;
+			opacity: 0.8;
+		}
+	}
+
+	&__buttons {
+		margin-top: 50px;
+		margin-bottom: 40px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 20px;
+	}
+}

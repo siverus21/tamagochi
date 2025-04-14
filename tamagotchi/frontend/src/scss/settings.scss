@@ -1,2 +1,11 @@
 @import "./normalaize/normalaize";
-@import "style";
+
+// utils css
+@import "./utils/variables";
+@import "./utils/mixins";
+
+// blocks css
+@import "./blocks/all-settings";
+@import "./blocks/gradient";
+@import "./blocks/button";
+@import "./src/scss/blocks/form-auth";

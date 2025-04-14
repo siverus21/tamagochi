@@ -1,0 +1,27 @@
+.button {
+	width: 300px;
+	height: 55px;
+	font-size: 22px;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	outline: none;
+	user-select: none;
+	color: $white;
+	border: 1px solid $black;
+	border-radius: $defaultBorderRadius;
+	background-image: $buttonMainBgColor;
+	box-shadow: $buttonShadow;
+	text-decoration: none;
+
+	&:hover {
+		transition: all 0.3s ease;
+		box-shadow: $buttonShadowHover;
+	}
+
+	@include flex-center;
+}

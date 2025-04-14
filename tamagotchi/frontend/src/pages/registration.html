@@ -9,30 +9,36 @@
 </head>
 
 <body>
-    <div class="form">
+    <div class="form__gradient">
+        <div class="form">
         <h3 class="form__title">Регистрация</h3>
         <form class="form__content" action="" method="POST">
             <div class="form__item">
-                <label class="form__label" for="name">Имя:</label>
-                <input class="form__input" type="text" name="name" required />
+                <!-- <label class="form__label" for="name">Имя:</label> -->
+                <input class="form__input" type="text" id="name" name="name" placeholder="Имя" required />
             </div>
             <div class="form__item">
-                <label class="form__label" for="login">Логин:</label>
-                <input class="form__input" type="text" name="login" reguired />
+                <!-- <label class="form__label" for="login">Логин:</label> -->
+                <input class="form__input" type="text" id="login" name="login" placeholder="Логин" reguired />
             </div>
             <div class="form__item">
-                <label class="form__label" for="email">Почта:</label>
-                <input class="form__input" type="email" name="email" required />
+                <!-- <label class="form__label" for="email">Почта:</label> -->
+                <input class="form__input" type="email" id="email" name="email" placeholder="Почта" required />
             </div>
             <div class="form__item">
-                <label class="form__label" for="password">Пароль:</label>
-                <input class="form__input" type="password" name="password" required />
+                <!-- <label class="form__label" for="password">Пароль:</label> -->
+                <input class="form__input" type="password" id="password" name="password" placeholder="Пароль" required />
             </div>
-            <button class="button button_submit" type="submit">
+            <div class="form__buttons">
+                <button class="button button_submit" type="submit">
                 Зарегистрироваться
             </button>
+            </div>
+            
         </form>
+        </div>
     </div>
+    
     <script src="./../../dist/bundle.js"></script>
 </body>
 
