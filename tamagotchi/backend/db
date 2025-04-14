@@ -1,0 +1,17 @@
+-- Создание таблицы entitlement
+CREATE TABLE entitlement (
+    id SERIAL PRIMARY KEY,
+    privilege VARCHAR(100) NOT NULL
+);
+
+-- Создание таблицы users
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    userName VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    registrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    lastLoginDate TIMESTAMP,
+    entitlementId INT,
+    FOREIGN KEY (entitlementId) REFERENCES entitlement(id)
+);
