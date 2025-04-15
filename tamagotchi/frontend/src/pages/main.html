@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tamagotchi Frontend</title>
+    <link rel="stylesheet" href="./../../dist/styles.css" />
+</head>
+
+<body>
+    <div class="app">
+        <!-- Хедер: пользовательская иконка, баланс, бургер-меню -->
+        <header class="header">
+            <div class="left-header">
+                <button id="user-profile-btn" class="icon-btn profile-icon" aria-label="Профиль пользователя">
+                    <img src="https://picsum.photos/seed/profile/40" alt="Профиль">
+                </button>
+                <div class="balance" id="coin-balance">100 💰</div>
+            </div>
+            <div class="right-header">
+                <button id="burger-btn" class="icon-btn burger-menu" aria-label="Меню">&#9776;</button>
+            </div>
+        </header>
+
+        <!-- Оверлей бургер-меню -->
+        <div id="burger-menu-overlay" class="burger-menu-overlay">
+            <nav class="burger-nav">
+                <button class="close-burger" aria-label="Закрыть меню">&times;</button>
+                <ul>
+                    <li><a href="#" data-action="play">Играть</a></li>
+                    <li><a href="#" data-action="profile">Профиль</a></li>
+                    <li><a href="#" data-action="settings">Настройки</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Основная область: питомец и индикаторы состояния -->
+        <main class="main">
+            <div class="pet-container">
+                <img src="" alt="Tamagotchi" class="pet-image" id="pet-image">
+            </div>
+
+            <!-- Интерфейс состояния питомца -->
+            <div class="status-panel">
+                <div class="status-item">
+                    <span>Сытость:</span>
+                    <div class="progress-bar" data-status="hunger">
+                        <div class="progress-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span>Энергия:</span>
+                    <div class="progress-bar" data-status="energy">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span>Настроение:</span>
+                    <div class="progress-bar" data-status="mood">
+                        <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span>Чистота:</span>
+                    <div class="progress-bar" data-status="hygiene">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Футер: кнопки действий и иконка магазина -->
+        <footer class="actions-footer">
+            <div class="action-buttons">
+                <button class="action-btn" data-action="feed">
+                    <span class="btn-icon">🍽</span>
+                    <span class="btn-label">Кормить</span>
+                </button>
+                <button class="action-btn" data-action="play">
+                    <span class="btn-icon">🎮</span>
+                    <span class="btn-label">Играть</span>
+                </button>
+                <button class="action-btn" data-action="sleep">
+                    <span class="btn-icon">😴</span>
+                    <span class="btn-label">Спать</span>
+                </button>
+                <button class="action-btn" data-action="care">
+                    <span class="btn-icon">🛁</span>
+                    <span class="btn-label">Ухаживать</span>
+                </button>
+            </div>
+            <button id="shop-btn" class="icon-btn shop-btn" aria-label="Магазин">
+                <span class="shop-icon">🏬</span>
+            </button>
+        </footer>
+
+        <!-- Магазин (модальное окно) -->
+        <div id="shop-modal" class="shop-modal">
+            <div class="shop-content">
+                <button class="close-shop" id="close-shop" aria-label="Закрыть магазин">&times;</button>
+                <div class="shop-tabs">
+                    <button class="shop-tab active" data-tab="food">Еда</button>
+                    <button class="shop-tab" data-tab="games">Игры</button>
+                    <button class="shop-tab" data-tab="other">Другое</button>
+                </div>
+                <div class="shop-items" id="shop-items">
+                    <!-- Здесь отрисовываются товары магазина -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Блок уведомлений -->
+        <div class="toast" id="toast">Действие выполнено!</div>
+    </div>
+    <script src="./../../dist/bundle.js"></script>
+</body>
+
+</html>

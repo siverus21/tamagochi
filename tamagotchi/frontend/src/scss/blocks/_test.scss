@@ -1,0 +1,308 @@
+// Переменные для цветовой палитры и базовые настройки
+$background-color: #f7f7f7;
+$primary-color: #4a90e2;
+$accent-color: #7ed321;
+$error-color: #d0021b;
+$text-color: #333;
+$btn-bg: #fff;
+$btn-border: #ddd;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	background-color: $background-color;
+	color: $text-color;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.app {
+	width: 100%;
+	max-width: 600px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+}
+
+/* Хедер */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75rem 1rem;
+	background: $primary-color;
+	color: #fff;
+
+	.left-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.icon-btn {
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+	}
+	.profile-icon img {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+	}
+	.balance {
+		font-size: 1rem;
+	}
+	.burger-menu {
+		font-size: 1.5rem;
+		color: #fff;
+	}
+}
+
+/* Burger-меню */
+.burger-menu-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	.burger-nav {
+		background: #fff;
+		padding: 1rem;
+		border-radius: 10px;
+		width: 80%;
+		max-width: 300px;
+		position: relative;
+		ul {
+			list-style: none;
+			li {
+				margin: 1rem 0;
+				a {
+					text-decoration: none;
+					color: $text-color;
+					font-size: 1.1rem;
+				}
+			}
+		}
+		.close-burger {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+			background: none;
+			border: none;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+	}
+}
+
+/* Основная область: питомец и статус */
+.main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+
+	.pet-container {
+		margin-bottom: 1rem;
+		.pet-image {
+			width: 100%;
+			max-width: 300px;
+			border-radius: 10px;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	/* Блок прогресс-баров состояния питомца */
+	.status-panel {
+		width: 100%;
+		max-width: 300px;
+		margin: 0 auto;
+		display: grid;
+		gap: 0.5rem;
+
+		.status-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 0.9rem;
+
+			.progress-bar {
+				position: relative;
+				width: 50%;
+				height: 10px;
+				background: #eee;
+				border-radius: 5px;
+				overflow: hidden;
+			}
+
+			.progress-fill {
+				height: 100%;
+				background: $primary-color;
+				transition: width 0.3s ease, background-color 0.3s ease;
+			}
+		}
+	}
+}
+
+/* Футер: кнопки действий и иконка магазина */
+.actions-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	background: #eee;
+
+	.action-buttons {
+		display: flex;
+		gap: 0.5rem;
+		flex: 1;
+
+		button.action-btn {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: $btn-bg;
+			border: 1px solid $btn-border;
+			border-radius: 8px;
+			padding: 0.5rem;
+			cursor: pointer;
+			transition: transform 0.2s;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+
+			.btn-icon {
+				font-size: 1.5rem;
+				margin-bottom: 0.25rem;
+			}
+			.btn-label {
+				font-size: 0.8rem;
+			}
+		}
+	}
+
+	.shop-btn {
+		background: none;
+		border: none;
+		font-size: 1.5rem;
+		cursor: pointer;
+	}
+}
+
+/* Магазин (модальное окно) */
+.shop-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	z-index: 200;
+
+	.shop-content {
+		background: #fff;
+		width: 80%;
+		max-width: 400px;
+		border-radius: 10px;
+		padding: 1rem;
+		position: relative;
+
+		.close-shop {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+			background: none;
+			border: none;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+
+		.shop-tabs {
+			display: flex;
+			gap: 0.5rem;
+			margin-bottom: 1rem;
+
+			button.shop-tab {
+				flex: 1;
+				padding: 0.5rem;
+				border: 1px solid $btn-border;
+				background: $btn-bg;
+				border-radius: 5px;
+				cursor: pointer;
+				transition: background 0.2s;
+
+				&.active {
+					background: $primary-color;
+					color: #fff;
+				}
+			}
+		}
+
+		.shop-items {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+
+			.shop-item {
+				flex: 1 1 calc(50% - 0.75rem);
+				border: 1px solid $btn-border;
+				border-radius: 5px;
+				padding: 0.5rem;
+				text-align: center;
+				cursor: pointer;
+
+				.item-name {
+					font-size: 0.9rem;
+					margin-bottom: 0.25rem;
+				}
+				.item-price {
+					font-size: 0.8rem;
+					color: $accent-color;
+				}
+			}
+		}
+	}
+}
+
+/* Уведомления (toast) */
+.toast {
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: $primary-color;
+	color: #fff;
+	padding: 0.75rem 1.25rem;
+	border-radius: 5px;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.5s ease;
+
+	&.show {
+		opacity: 1;
+	}
+}
