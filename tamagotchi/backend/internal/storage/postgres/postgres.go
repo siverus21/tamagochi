@@ -3,6 +3,7 @@ package postgres
 import (
 	"database/sql"
 	"fmt"
+	"log"
 
 	_ "github.com/lib/pq" // init postgres driver
 )
@@ -43,56 +44,22 @@ func New(conSettings string) (*Storage, error) {
 	return &Storage{db: db}, nil
 }
 
-func (s *Storage) GetAllUsers() ([]User, error) {
-	const query = `
-		SELECT 
-			u.id, u.userName, u.email, u.password, u.registrationDate, u.lastLoginDate,
-			e.id AS entitlementId, e.privilege
-		FROM users u
-		LEFT JOIN entitlement e ON u.entitlementId = e.id
-	`
-
-	rows, err := s.db.Query(query)
+// Метод для аутентификации пользователя.
+// Если пользователь не найден, возвращает (false, nil).
+// В случае технической ошибки возвращает (false, err).
+// Прямое сравнение паролей используется только для примера.
+func (s *Storage) AuthenticateUser(login, password string) (bool, error) {
+	var storedPassword string
+	query := "SELECT password FROM users WHERE username=$1"
+	err := s.db.QueryRow(query, login).Scan(&storedPassword)
 	if err != nil {
-		return nil, fmt.Errorf("GetAllUsers: query error: %w", err)
+		if err == sql.ErrNoRows {
+			log.Println("Пользователь не найден:", login)
+			return false, nil
+		}
+		log.Println("Ошибка при получении данных пользователя:", err)
+		return false, err
 	}
-	defer rows.Close()
-
-	var users []User
-
-	for rows.Next() {
-		var user User
-		var entID sql.NullInt64
-		var privilege sql.NullString
-		var lastLogin sql.NullString
-
-		err := rows.Scan(
-			&user.ID,
-			&user.UserName,
-			&user.Email,
-			&user.Password,
-			&user.RegistrationDate,
-			&lastLogin,
-			&entID,
-			&privilege,
-		)
-		if err != nil {
-			return nil, fmt.Errorf("GetAllUsers: row scan error: %w", err)
-		}
-
-		if lastLogin.Valid {
-			user.LastLoginDate = &lastLogin.String
-		}
-
-		if entID.Valid && privilege.Valid {
-			user.Entitlement = &Entitlement{
-				ID:        int(entID.Int64),
-				Privilege: privilege.String,
-			}
-		}
-
-		users = append(users, user)
-	}
-
-	return users, nil
+	log.Println("Пользователь найден!", login)
+	return password == storedPassword, nil
 }
