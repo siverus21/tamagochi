@@ -18,7 +18,7 @@ const (
 func main() {
 	// TODO: config -> cleanenv
 	cfg := config.MustLoad()
-
+ 
 	// TODO: init logger -> slog
     log := setupLogger(cfg.Env)
 
